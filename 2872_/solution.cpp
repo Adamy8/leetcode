@@ -7,22 +7,20 @@ private:
     typedef struct node_struct{
         int value = -1;
         vector<int> children;
-        int left = -1;
-        int right = -1;
+        // int left = -1;
+        // int right = -1;
     }Node;
 
     int DFS(vector<Node> tree, vector<int> & sum, int curr){
-        if (tree[curr].left == -1 && tree[curr].right == -1){
-            sum[curr] = tree[curr].value;
-        }else if(tree[curr].left == -1){
-            sum[curr] = tree[curr].value + DFS(tree,sum,tree[curr].right);
-        }else if(tree[curr].right == -1){
-            sum[curr] = tree[curr].value + DFS(tree,sum,tree[curr].left);
-        }else{
-            sum[curr] = tree[curr].value + DFS(tree,sum,tree[curr].left) + DFS(tree,sum,tree[curr].right);
+        sum[curr] = tree[curr].value;
+        if(!tree[curr].children.empty()){
+            for(int i=0; i<tree[curr].children.size(); i++){
+                sum[curr] += DFS(tree,sum,tree[curr].children[i]); 
+            }
         }
         return sum[curr];
     }
+
     bool is_in(const vector<int> arr, int n){
         return find(arr.begin(), arr.end(), n) != arr.end();
     }
@@ -87,10 +85,17 @@ int main(){
     // vector<vector<int>> edges = {{0,2},{1,2},{1,3},{2,4}};
     // vector<int> values = {1,8,1,4,4};
     // int k = 6;
-    int n = 1;
-    vector<vector<int>> edges = {};
-    vector<int> values = {10000};
-    int k = 100;
+
+    // int n = 1;
+    // vector<vector<int>> edges = {};
+    // vector<int> values = {10000};
+    // int k = 100;
+
+    int n = 10;
+    vector<vector<int>> edges = {{9,5}, {4,9}, {5,8}, {3,6}, {8,6}, {0,1}, {9,0}, {6,2}, {3,7}};
+    vector<int> values = {10,14,12,4,12,1,8,36,12,11};
+    int k = 12;
+
 
     Solution sol;
     cout<<sol.maxKDivisibleComponents(n,edges,values,k)<<endl;
