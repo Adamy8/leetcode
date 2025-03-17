@@ -27,3 +27,4 @@ class Solution:
             for j in range(k):
                 sums[i] += nums[i+j]
         
+###### NONSENCE
