@@ -1,3 +1,6 @@
+
+// 这是个笨办法，暴力破解。有聪明很多的方法。
+
 #include <iostream>
 #include <string>
 using namespace std;
@@ -7,7 +10,7 @@ public:
     string gcdOfStrings(string str1, string str2) {
         int minlength = min(str1.length(),str2.length());
 
-        int sameuntil = 0;
+        int sameuntil = -1;
         for(int i=0; i< minlength; i++){
             if(str1[i] == str2[i]){
                 sameuntil = i;
@@ -16,14 +19,15 @@ public:
                 break;
             }
         }
-        if(!sameuntil) return "";
         int gcd = sameuntil+1;
+        if(!gcd) return "";
         while(true){
             string gcdstr = str1.substr(0, gcd);
             if(isconsist(str1,gcdstr) && isconsist(str2,gcdstr)){
                 return gcdstr;
             }
             gcd -= 1;
+            if (gcd == 0) return "";
         }
     }
 
@@ -52,6 +56,10 @@ int main() {
     str1 = "LEET";
     str2 = "CODE";
     cout << sol.gcdOfStrings(str1, str2) << endl; // Output: ""
+
+    str1 = "AA";
+    str2 = "A";
+    cout << sol.gcdOfStrings(str1, str2) << endl; // Output: "A"
 
     return 0;
 }
