@@ -1,4 +1,4 @@
-#include<cmath>
+#include<algorithm> // for min, max
 class Solution {
 public:
     int maxArea(vector<int>& height) {
