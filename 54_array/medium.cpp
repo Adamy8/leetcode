@@ -11,29 +11,29 @@ public:
 
         for(int i=0; i<m*n; ){
             // add in order or top-right-down-left
-            if(right>=left){ // top
-                for(int j=left; j<=right; j++){
+            if(top <= down){ // top
+                for(int j = left; j <= right; j++){
                     ans.push_back(matrix[top][j]);
                     i++;
                 }
                 top++;
             }
-            if(down>=top){ //right
-                for(int j=top; j<=down; j++){
+            if(left <= right){ // right
+                for(int j = top; j <= down; j++){
                     ans.push_back(matrix[j][right]);
                     i++;
                 }
                 right--;
             }
-            if(left<=right){ //down
-                for(int j=right; j>=left; j--){
+            if(top <= down){ // down
+                for(int j = right; j >= left; j--){
                     ans.push_back(matrix[down][j]);
                     i++;
                 }
                 down--;
-            } 
-            if(top<=down){  //left
-                for(int j=down; j>=top; j--){
+            }
+            if(left <= right){ // left
+                for(int j = down; j >= top; j--){
                     ans.push_back(matrix[j][left]);
                     i++;
                 }
