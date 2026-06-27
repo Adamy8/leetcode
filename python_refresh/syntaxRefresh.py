@@ -9,6 +9,8 @@ import math
 math.sqrt(25)
 math.ceil(3.2)
 math.floor(3.8)
+5/2 = 2.5
+5//2 = 2
 
 # vector/list
 arr = []
@@ -19,8 +21,10 @@ arr[i]
 len(arr)
 arr[-1]  # last element
 arr.insert(i, x)
-arr.sort()
-arr.reverse()
+arr.sort()    # inplace!
+new_arr = sorted(arr)  # not inplace
+arr.reverse()   # same with ::-1 but its inplace, O(n) time and O(1) space
+new_array = arr[::-1]  # reverse list, O(n) time and space
 arr.remove(x)  # remove first occurrence of x
 arr.count(x)  # count occurrences of x
 arr.index(x)  # index of first occurrence of x
