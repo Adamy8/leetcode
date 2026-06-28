@@ -33,3 +33,12 @@ cnt = Counter([1,1,2,2,2,5])
 print(cnt[1])  # 2
 print(cnt[2])  # 3
 print(cnt[5])  # 1
+
+cnt.most_common(1)
+# returns [(2, 3)]
+cnt.most_common(2)
+# returns [(2, 3), (1, 2)]
+
+# iterating:
+for num, freq in cnt.items():
+    print(num, freq)
