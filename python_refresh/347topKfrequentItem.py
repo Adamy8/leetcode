@@ -15,7 +15,8 @@ class Solution:
         for _ in range(k):
             ans.append(heapq.heappop(heap)[1])
         return ans
-# my sol, used heapq w negate val to get k largest, O(nlogk) time, O(n) space
+# my sol, used heapq w negate val to get k largest, 
+# O(nlogk) time - logk heappush n times, O(n) space for dt{}
 
 # another way is use vector to store value at frequecy as index.
 # might have same frequency, so we need to store a list of values at each frequency index. 
